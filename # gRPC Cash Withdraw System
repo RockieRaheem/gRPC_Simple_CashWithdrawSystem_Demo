@@ -1,0 +1,68 @@
+# gRPC Cash Withdraw System
+
+A simple gRPC-based cash withdrawal system in Python. This project demonstrates a client-server architecture where clients can request withdrawals from predefined accounts, and the server processes these requests with thread-safe balance management.
+
+## Features
+
+- gRPC server for handling withdrawal requests
+- Thread-safe account balance updates
+- Simple CLI client for making withdrawal requests
+- Protobuf-based message definitions
+
+## Project Structure
+
+```
+withdraw_client.py      # gRPC client implementation
+withdraw_server.py      # gRPC server implementation
+withdraw.proto          # Protobuf service and message definitions
+withdraw_pb2.py         # Generated protobuf code (do not edit)
+withdraw_pb2_grpc.py    # Generated gRPC code (do not edit)
+__pycache__/            # Python bytecode cache
+```
+
+## Prerequisites
+
+- Python 3.12+
+- `grpcio` and `grpcio-tools` packages
+
+Install dependencies:
+```sh
+pip install grpcio grpcio-tools
+```
+
+## Generating gRPC Code
+
+If you modify `withdraw.proto`, regenerate the Python code:
+```sh
+python -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. withdraw.proto
+```
+
+## Running the Server
+
+Start the gRPC server:
+```sh
+python withdraw_server.py
+```
+
+## Running the Client
+
+In another terminal, run:
+```sh
+python withdraw_client.py
+```
+
+## Example Accounts
+
+- `ACCT-1001`: $500.00
+- `ACCT-1002`: $1000.00
+- `ACCT-1003`: $750.00
+
+## Usage
+
+1. Start the server.
+2. Run the client and follow the prompts to enter an account ID and withdrawal amount.
+3. The client will display success or error messages based on the server's response.
+
+## License
+
+This project is
