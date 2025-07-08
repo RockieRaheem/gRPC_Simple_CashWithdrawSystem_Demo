@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+service WithdrawService {
+  rpc Withdraw (WithdrawRequest) returns (WithdrawResponse) {}
+}
+
+message WithdrawRequest {
+  string account_id = 1;
+  double amount = 2;
+}
+
+message WithdrawResponse {
+  bool success = 1;
+  double new_balance = 2;
+  string message = 3;
+}
